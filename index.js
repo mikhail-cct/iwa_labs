@@ -9,8 +9,12 @@ let port = 8000;
 app.use(bodyParser.json());
 app.use(logger("tiny"));
 
-app.get("/", (req, res)=>{
-    res.json({message: "Hello World!"});
+app.get("/:foo/:bar", (req, res)=>{
+    res.json({message: "Hello World!",
+    	      data: [
+                req.params.foo,
+                req.params.bar
+              ]});
 })
 
 app.listen(port, function(err){
