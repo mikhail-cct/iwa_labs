@@ -1,15 +1,14 @@
 const   http = require("http"),
         logger = require("morgan"),
         express = require("express"),
-        bodyParser = require("body-parser"),
         mongoose = require("mongoose");
 
 let app = express();
 let port = 8000;
 
-app.use(bodyParser.json());
-app.use(require('./routes'));
+app.use(express.json());
 app.use(logger("tiny"));
+app.use(require('./routes'));
 
 const dbURI = "mongodb://localhost/test";
 
