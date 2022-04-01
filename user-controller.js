@@ -27,3 +27,12 @@ exports.getUser = function(req, res) {
       res.json(user);
     }); 
 };
+
+exports.updateUser = function(req, res) {
+    User.findOneAndUpdate({_id: req.params.id}, req.body, {new: true},function (err, user) {
+      if (err) {
+        res.status(400).json(err);
+      } 
+      res.json(user);
+    }); 
+};
