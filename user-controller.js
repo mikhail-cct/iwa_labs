@@ -36,3 +36,12 @@ exports.updateUser = function(req, res) {
       res.json(user);
     }); 
 };
+
+exports.deleteUser = function(req, res) {
+    User.findByIdAndRemove(req.params.id, function (err, user) {
+      if (err) {
+        res.status(400).json(err);
+      } 
+      res.json(user);
+    }); 
+};
